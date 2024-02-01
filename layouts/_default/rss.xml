@@ -1,0 +1,25 @@
+<rss version="2.0" >
+  <channel>
+    <title>{{ .Site.Title }}</title>
+    <link>{{"feed.xml" | urlize}}</link>
+    <description>{{ .Site.Title }}</description>
+    <generator>Hugo -- gohugo.io</generator>
+    {{ with .Site.LanguageCode }}<language>{{.}}</language>{{end}}
+    {{ with .Site.Author.name }}<managingEditor>{{.}}{{ with $.Site.Author.email }} ({{.}}){{end}}</managingEditor>{{end}}
+    {{ with .Site.Author.name }}<webMaster>{{.}}{{ with $.Site.Author.email }} ({{.}}){{end}}</webMaster>{{end}}
+    {{ with .Site.Copyright }}<copyright>{{.}}</copyright>{{end}}
+    {{ if not .Lastmod.IsZero }}<lastBuildDate>{{ .Lastmod.Format "Mon, 02 Jan 2006 15:04:05 CET" | safeHTML }}</lastBuildDate>{{ end }}
+    
+    {{ $combinedPages := where .Site.RegularPages "Section" "in" (slice "guides" "lists" "writing")}}
+    {{ range $combinedPages.ByDate.Reverse }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 CET" | safeHTML }}</pubDate>
+      {{ with .Site.Author.name }}<author>{{.}}{{ with $.Site.Author.email }} ({{.}}){{end}}</author>{{end}}
+      <guid>{{ md5 .Content }}</guid>
+      <description>{{ .Content | html }}</description>
+    </item>
+    {{ end }}
+  </channel>
+</rss>

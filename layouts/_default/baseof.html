@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	
+	{{partial "meta.html" .}}
+
+	<style>
+
+		@font-face {
+	        font-family: 'Switzer';
+	        font-style: normal;
+	        src: url('/fonts/Switzer.ttf');
+	        font-display: swap;
+	        font-weight: 1 999;  
+	    }
+
+	    :root{
+	    	--theme: #de5727;
+	    }
+
+		*{
+			box-sizing: border-box;
+			vertical-align: top;
+		}
+
+		body{
+			margin: 0px;
+			font-family: system-ui, Helvetica Neue;
+			color: #333;
+			line-height: 1.5em;
+			background: #de572708;
+			letter-spacing: -0.2px;
+		}
+
+		.sidebar{
+			width: 15em;
+			height: calc(100vh);
+			font-size: 14px;
+			display: inline-block;
+			position: fixed;
+			top: 0em;
+			left: 0em;
+			border-right: solid 1px var(--theme);
+			background: #ffffff77;
+			color: var(--theme);
+			overflow: auto;
+		}
+
+		.sidebar a{
+			color: inherit;
+			font-weight: inherit;
+			text-decoration: none;
+		}
+
+		.title{
+			padding: 1em;
+			background: var(--theme);
+			color: white;
+			font-size: 1.2em;
+			font-weight: 200;
+		}
+
+		.nav-element{
+			padding: 1em 1.25em;
+			display: inline-block;
+			width: 100%;
+			border-bottom: solid 1px var(--theme);
+/*			font-weight: 600;*/
+		}
+
+		.nav-sub-element{
+			padding: 0.7em;
+			padding-left: 1.25em;
+			font-size: 0.85em;
+			display: inline-block;
+			width: 100%;
+			border-bottom: solid 1px var(--theme);
+			border-left: solid 2em var(--theme);
+		}
+
+		.nav-sub-element:hover, .nav-element:hover{
+			background: #de572711;
+		}
+
+		main{
+			display: inline-block;
+			padding: 2em 2em 2em 10%;
+			text-align: left;
+			max-width: 42rem;
+			width: 100%;
+		}
+
+		.content{
+			display: inline-block;
+			width: calc(100%);
+			padding-left: 15em;
+		}
+
+		.mobile-menu{
+			display: none;
+		}
+
+		@media screen and (max-width: 600px){
+			.sidebar{
+/*				display: none;*/
+				width: 100%;
+				position: relative;
+				background: white;
+				height: fit-content;
+			}
+
+			nav{
+				max-height: 0px;
+				overflow: hidden;
+			}
+
+			.mobile-menu{
+				float: right;
+				background: transparent;
+				color: inherit;
+				border: none;
+				padding: 0em 0em;
+				font-size: 1.25em;
+				display: inline;
+			}
+
+			.content{
+				padding-left: 0px;
+			}
+
+			main{
+				padding: 1.5em;
+				font-size: 0.9em;
+				line-height: 1.5em;
+			}
+		}
+
+	</style>
+
+</head>
+
+<body>
+
+	<div class=sidebar>
+		<div class=title>
+			<a href="/">Handy</a>
+			<button class=mobile-menu onclick="toggleNav()"> + </button>
+		</div>
+
+		<nav>
+			<a href="/handy-js"><div class=nav-element>Handy.js</div></a>
+			<a href="/meta-tags"><div class=nav-element>Meta tags</div></a>
+			<a href="/snippets"><div class=nav-element>Snippets</div></a>
+			<a href="/hugo-starter"><div class=nav-element>Hugo Starter Site</div></a>
+			<a href="/stylesheets"><div class=nav-element>Stylesheets</div></a>
+				<a href="/stylesheets/typography"><div class=nav-sub-element>Typography</div></a>
+				<a href="/stylesheets/ui"><div class=nav-sub-element>UI</div></a>
+		</nav>
+	</div>
+
+	<div class=content>
+		{{ block "main" .}}
+	  	{{ end }}
+	</div>
+
+	<script>
+		function toggleNav(){
+			let open = document.querySelector('nav').style.maxHeight
+			document.querySelector('nav').style.maxHeight = (open == '0px' || open == '') ? 'fit-content' : '0px'
+		}
+	</script>
+
+</body>
+</html>
