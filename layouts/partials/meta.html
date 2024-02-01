@@ -1,6 +1,5 @@
 <title> {{.Title}} </title>
-<meta name="description" content="{{ if .Description }}{{ .Description }}
-{{ else }} {{ .Site.Params.description }}{{ end }}">
+<meta name="description" content="Web dev utilities for ordinary people.">
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
@@ -10,24 +9,17 @@
 <link rel="icon" type="image/png" sizes="16x16"  href="/card.png"> 
 
 <!-- Facebook Open Graph tags -->
-<meta property="og:url" content="{{ .Site.BaseURL}}" />
-<meta property="og:title" content="{{ .Title }}" />
-<meta property="og:description" content="{{ if .Description }}{{ .Description }}
-{{ else }} {{ .Site.Params.description }}{{ end }}" />
-<meta property="og:image" content="https://joodaloop.com/card.png" />
+<meta property="og:url" content="https://handy.joodaloop.com" />
+<meta property="og:title" content="Handy" />
+<meta property="og:description" content="Web dev utilities for ordinary people." />
+<meta property="og:image" content="https://handy.joodaloop.com/card.png" />
 
 
 <!-- Twitter Card (large image card) tags -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@joodalooped">
-<meta name="twitter:title" content="{{ .Title }}">
-<meta name="twitter:description" content="{{ if .Description }}{{ .Description }}
-{{ else }} {{ .Site.Params.description }}{{ end }}" />
-<meta name="twitter:image" content="https://joodaloop.com/card.png" />
+<meta name="twitter:title" content="Handy">
+<meta name="twitter:description" content="Web dev utilities for ordinary people." />
+<meta name="twitter:image" content="https://handy.joodaloop.com/card.png" />
 
-<script async defer data-website-id="427207a6-7bf1-49c8-b4a3-9cd4a6a1c6c9" src="https://study.joodaloop.com/bones.js"></script>
-
-<link rel="alternate" type="application/rss+xml" 
-  title="RSS Feed for {{ .Site.Title }}." 
-  href="/index.xml" />
 <link rel="stylesheet" type="text/css" href="/css/shared.css"/>
